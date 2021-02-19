@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ChildOnCollision : MonoBehaviour
 {
+    SphereCollider col;
+    [SerializeField] float sizeIncrease = 0.2f;
 
     void Start()
     {
-        
+        col = gameObject.GetComponent<SphereCollider>();
     }
 
 
@@ -25,6 +27,7 @@ public class ChildOnCollision : MonoBehaviour
             ob.transform.parent = gameObject.transform;
             ob.transform.position = pos;
             ob.GetComponent<Collider>().enabled = false;
+            col.radius += sizeIncrease;
             //collision.gameObject.transform.localPosition
         }
     }
